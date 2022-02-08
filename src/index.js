@@ -8,11 +8,9 @@ const { runAction } = require('./release-notify-action')
 async function run() {
   toolkit.logActionRefWarning('nearform/github-action-notify-release')
 
-  console.log('Repo name event:', github.event.repository.name)
-  console.log('Repo name from pr', github.event.pull_request.base.repo.name)
+  console.log('Repo name event:', JSON.stringify(github.event))
 
-  core.warning('Repo name event:', github.event.repository.name)
-  core.warning('Repo name from pr', github.event.pull_request.base.repo.name)
+  core.warning('Repo name event:', JSON.stringify(github.event))
 
   const token = core.getInput('github-token', { required: true })
   const staleDays = Number(core.getInput('stale-days'))
