@@ -23,15 +23,6 @@ on:
           - major
 
 jobs:
-  printJob:    
-    name: Print event
-    runs-on: ubuntu-latest
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
   closeIssue:
       name: Close release issue
       runs-on: ubuntu-latest
@@ -47,6 +38,7 @@ jobs:
             REPO: ${{ github.repository }}
         - name: Close release issues
           run: |
-            cat ${{ steps.release-issue.outputs.issue }} | xargs gh issue close
+            gh issue close $ISSUE_NUMBER
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ISSUE_NUMBER: ${{ steps.release-issue.outputs.issue }}
