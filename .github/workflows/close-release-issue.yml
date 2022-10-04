@@ -8,19 +8,24 @@ on:
 
 jobs:
   closeIssue:
-      name: Close issue created by notify-release
+      name: Close release issue
       runs-on: ubuntu-latest
       steps:
         - name: Find issues
           id: release-issue
-          uses: actions-cool/issues-helper@v3
-          with:
-            actions: 'find-issues'
-            token: ${{ secrets.GITHUB_TOKEN }}
-            issue-creator: 'github-actions'
-            issue-state: 'open'
-            title-includes: 'Release pending!'
-            body-includes: 'Pending commits since release'
-            labels: 'notify-release'
+          # uses: actions-cool/issues-helper@v3
+          # with:
+          #   actions: 'find-issues'
+          #   token: ${{ secrets.GITHUB_TOKEN }}
+          #   issue-creator: 'github-actions'
+          #   issue-state: 'open'
+          #   title-includes: 'Release pending!'
+          #   body-includes: 'Pending commits since release'
+          #   labels: 'notify-release'
+          run: gh search issues --label:notify-release
+          env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: Close release issues
           run: cat ${{ steps.release-issue.outputs.path }} | xargs gh issue close
+          env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
