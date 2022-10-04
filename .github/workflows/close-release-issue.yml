@@ -27,9 +27,9 @@ jobs:
           run: |
             echo "$REPO"
             releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release)"
-            releaseIssuee="$(gh search issues --repo=$REPO --state=open --label=notify-release | jq 'keys')"
             echo "::set-output name=issue::$releaseIssue"
-            echo "$releaseIssuee"
+          # releaseIssuee="$(gh search issues --repo=$REPO --state=open --label=notify-release | jq 'keys')"
+          # echo "$releaseIssuee"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             REPO: ${{ github.repository }}
