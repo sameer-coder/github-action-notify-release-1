@@ -1,0 +1,34 @@
+name: close release issue
+
+on:
+  workflow_run:
+    workflows: [release]
+    types:
+      - completed
+
+jobs:
+  printJob:    
+      name: Print event
+      runs-on: ubuntu-latest
+      steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.event) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+  titlePrefixCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Release version
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
+      - if: github.event.issue.title == 'Release pending!'
+        name: Close Issue
+        uses: peter-evans/close-issue@v2
+        with:
+          comment: |
+            Release created successfully.
+            Auto-closing this issue.
