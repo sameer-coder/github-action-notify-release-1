@@ -38,7 +38,7 @@ jobs:
             REPO: ${{ github.repository }}
         - name: Close release issues
           run: |
-            gh issue close $ISSUE_NUMBER
+            gh issue close "$ISSUE_NUMBER"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ISSUE_NUMBER: ${{ steps.release-issue.outputs.issue }}
