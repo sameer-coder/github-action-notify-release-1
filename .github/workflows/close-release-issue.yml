@@ -25,14 +25,14 @@ jobs:
         - name: Find issues
           id: release-issue
           run: |
-            echo "$OWNER"
             echo "$REPO"
-            releaseIssue="$(gh search issues --repo=$REPO --owner=$OWNER --state=open --label=notify-release)"
+            releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release)"
+            releaseIssuee="$(gh search issues --repo=$REPO --state=open --label=notify-release | jq -r '.[] | .title')"
             echo "::set-output name=issue::$releaseIssue"
+            echo "::set-output name=issuee::$releaseIssuee"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            OWNER: ${{ github.repository_owner }}
-            REPO: ${{ github.event.repository.name }}
+            REPO: ${{ github.repository }}
         # - name: Close release issues
         #   run: cat ${{ steps.release-issue.outputs.issue }} | xargs gh issue close
         #   env:
