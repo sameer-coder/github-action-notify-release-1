@@ -12,6 +12,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Find issues
+          id: release-issue
           uses: actions-cool/issues-helper@v3
           with:
             actions: 'find-issues'
