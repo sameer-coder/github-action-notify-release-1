@@ -1,26 +1,17 @@
 name: close release issue
 
-# on:
-#   workflow_run:
-#     workflows: [release]
-#     branches:
-#       - main
-#       - master
-#     types:
-#       - completed
-
 on:
-  workflow_dispatch:
-    inputs:
-      semver:
-        description: "The semver to use"
-        required: false
-        default: "patch"
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
+  workflow_run:
+    workflows: [release]
+    branches:
+      - main
+      - master
+    types:
+      - completed
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  REPO: ${{ github.repository }}
 
 jobs:
   closeIssue:
@@ -32,14 +23,8 @@ jobs:
           run: |
             issueNumber="$(gh search issues --repo=$REPO --state=open --label=notify-release --json=number | jq -r '.[0].number')"
             echo "::set-output name=issue::$issueNumber"
-            echo "Closing Issue #$issueNumber"
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            REPO: ${{ github.repository }}
         - name: Close release issues
           run: |
             gh issue close --repo=$REPO "$ISSUE_NUMBER"
           env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ISSUE_NUMBER: ${{ steps.release-issue.outputs.issue }}
-            REPO: ${{ github.repository }}
