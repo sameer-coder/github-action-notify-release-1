@@ -11,12 +11,15 @@ jobs:
       name: Close issue created by notify-release
       runs-on: ubuntu-latest
       steps:
-        - name: Find release issue
-          id: release-issue
-          uses: lee-dohm/select-matching-issues@v1
+        - name: Find issues
+          uses: actions-cool/issues-helper@v3
           with:
-            format: list
-            query: 'label:notify-release is:open'
-            token: ${{ github.token }}
+            actions: 'find-issues'
+            token: ${{ secrets.GITHUB_TOKEN }}
+            issue-creator: 'github-actions'
+            issue-state: 'open'
+            title-includes: 'Release pending!'
+            body-includes: 'Pending commits since release'
+            labels: 'notify-release'
         - name: Close release issues
           run: cat ${{ steps.release-issue.outputs.path }} | xargs gh issue close
