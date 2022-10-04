@@ -17,7 +17,7 @@ jobs:
           id: release-issue
           run: |
             releaseIssue="$(gh search issues --label:notify-release)"
-            echo "::set-output name=issue::$issue"
+            echo "::set-output name=issue::$releaseIssue"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: Close release issues
