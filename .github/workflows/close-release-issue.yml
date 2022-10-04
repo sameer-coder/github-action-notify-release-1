@@ -40,11 +40,9 @@ jobs:
           id: release-issue
           run: |
             echo "$REPO"
-            releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release)"
+            releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release --json title)"
             echo "::set-output name=issue::$releaseIssue"
             echo "$releaseIssue"
-          # releaseIssuee="$(gh search issues --repo=$REPO --state=open --label=notify-release | jq 'keys')"
-          # echo "$releaseIssuee"
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             REPO: ${{ github.repository }}
