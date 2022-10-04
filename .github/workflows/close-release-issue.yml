@@ -32,7 +32,7 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             OWNER: ${{ github.repository_owner }}
-            REPO: ${{ github.event.action.repository.name }}
+            REPO: ${{ github.event.repository.name }}
         # - name: Close release issues
         #   run: cat ${{ steps.release-issue.outputs.issue }} | xargs gh issue close
         #   env:
