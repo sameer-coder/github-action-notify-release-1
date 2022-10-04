@@ -40,7 +40,7 @@ jobs:
           id: release-issue
           run: |
             echo "$REPO"
-            releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release --json=number | jq -r '.[0] | select(number)')"
+            releaseIssue="$(gh search issues --repo=$REPO --state=open --label=notify-release --json=number | jq -r '.[0].number')"
             echo "::set-output name=issue::$releaseIssue"
             echo "$releaseIssue"
           env:
