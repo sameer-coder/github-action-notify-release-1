@@ -48,8 +48,7 @@ jobs:
             REPO: ${{ github.repository }}
         - name: Close release issues
           run: |
-            echo "$GITHUB_CONTEXT"
+            cat ${{ steps.release-issue.outputs.issue }}
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GITHUB_CONTEXT: ${{ toJson(steps.release-issue.outputs.issue) }}
 #  cat ${{ steps.release-issue.outputs.issue.number }} | xargs gh issue close
