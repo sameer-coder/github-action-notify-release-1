@@ -11,6 +11,7 @@ async function run() {
   const staleDays = Number(core.getInput('stale-days'))
   const commitMessageLines = Number(core.getInput('commit-messages-lines'))
 
+  console.log('TEST')
   await runAction(token, staleDays, commitMessageLines)
 }
 
