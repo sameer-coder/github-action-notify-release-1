@@ -2,7 +2,7 @@ name: close release issue
 
 on:
   workflow_run:
-    workflows: [release]
+    workflows: [release-test]
     branches:
       - main
       - master
