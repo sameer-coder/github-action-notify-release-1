@@ -1,0 +1,31 @@
+name: Update licenses file
+
+on:
+  push:
+   branches:
+    - master
+
+jobs:
+  update-licenses:
+    name: Generates a licenses file for the dependencies used in the application and commits the changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: |
+          npm ci
+      - name: Generate licenses file
+        uses: nearform/github-action-licenses-export@exclude-packages
+        with:
+          licenses-file: src/licenses.json
+          exclude-packages: ['lodash']
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'chore: update licenses file'
+          add: src/licenses.json
