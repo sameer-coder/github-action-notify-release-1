@@ -1,7 +1,7 @@
 {
   "name": "github-action-notify-release",
   "version": "2.1.7",
-  "description": "Github acttt735",
+  "description": "Gttt735",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build src --license licenses.txt",
