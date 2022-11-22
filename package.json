@@ -1,6 +1,6 @@
 {
   "name": "github-action-notify-release",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Github actiyyyT37735",
   "main": "dist/index.js",
   "scripts": {
