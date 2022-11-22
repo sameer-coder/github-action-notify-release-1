@@ -1,7 +1,7 @@
 {
   "name": "github-action-notify-release",
   "version": "1.4.2",
-  "description": "Github action for notifying of a pending release",
+  "description": "Github action for notifying of a pending releaseee",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build src --license licenses.txt",
