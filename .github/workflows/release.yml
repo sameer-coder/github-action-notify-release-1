@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 16
 
-      - uses: sameer-coder/optic-release-automation-action@fix-pr-body-too-long
+      - uses: sameer-coder/optic-release-automation-action@main
         with:
           github-token: ${{ github.token }}
           semver: ${{ github.event.inputs.semver }}
