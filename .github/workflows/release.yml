@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 16
 
-      - uses: nearform/optic-release-automation-action@fix-external-linked-issues
+      - uses: sameer-coder/optic-release-automation-action@fix-pr-body-too-long
         with:
           github-token: ${{ github.token }}
           semver: ${{ github.event.inputs.semver }}
