@@ -13,7 +13,7 @@ on:
           - patch
           - minor
           - major
-      baseTag:
+      base-tag:
         description: 'base release tag'
   pull_request:
     types: [closed]
