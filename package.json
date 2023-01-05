@@ -1,7 +1,7 @@
 {
   "name": "github-action-notify-release",
   "version": "4.0.0",
-  "description": "tetdfdfdf",
+  "description": "tetssssdfdf",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build src --license licenses.txt",
