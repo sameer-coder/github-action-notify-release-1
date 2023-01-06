@@ -15,6 +15,7 @@ on:
           - major
       baseTag:
         description: 'base release tag'
+        default: ""
   pull_request:
     types: [closed]
 
@@ -27,7 +28,7 @@ jobs:
         with:
           node-version: 16
 
-      - uses: sameer-coder/optic-release-automation-action@main
+      - uses: nearform/optic-release-automation-action@auto-version-bump
         with:
           github-token: ${{ github.token }}
           semver: ${{ github.event.inputs.semver }}
