@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.1.0](https://github.com/sameer-coder/github-action-notify-release-1/compare/v5.0.0...v5.1.0) (2023-01-10)
+
+
+### Features
+
+* test ([d9b7586](https://github.com/sameer-coder/github-action-notify-release-1/commit/d9b75863cc5df4fe6847f0a6c25dc05b72432cf6))
+
+
+### Bug Fixes
+
+* workflow ([f459ac8](https://github.com/sameer-coder/github-action-notify-release-1/commit/f459ac8babee4efc3e445aa630b29531a0d4144e))
+
 ## [5.0.0](https://github.com/sameer-coder/github-action-notify-release-1/compare/v4.0.0...v5.0.0) (2023-01-10)
 
 
