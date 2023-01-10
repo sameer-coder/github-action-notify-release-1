@@ -1,5 +1,5 @@
 # github-action-notify-release
-
+ee
 DGitHub Action that automatically creates an issue with an overview of the commits that are waiting to be released. After creating the release, the issue will be automatically closed during next action run. Editin stuff. .
 
 ## Example
