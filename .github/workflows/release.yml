@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 16
 
-      - uses: sameer-coder/optic-release-automation-action@feat-pr-update
+      - uses: sameer-coder/optic-release-automation-action@feat-update-pr
         with:
           github-token: ${{ github.token }}
           semver: ${{ github.event.inputs.semver }}
