@@ -1,5 +1,5 @@
 # github-action-notify-release
-ttttyggggt automatically creates an issue with an overview of the commits that are waiting to be released. After a new release is published, the issue will be automatically closed.
+ttttyggggt automatically creates an issue with an overview of the commits that are waiting to be released. After a new release is published, the ihggutomatically closed.
 
 ## Example
 
